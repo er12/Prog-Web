@@ -29,7 +29,7 @@ public class Main {
                         System.out.print("Inserte URL (Ej.:google.com): ");
                         URL = scanner.nextLine();
 
-                        doc = Jsoup.connect("http://www."+URL).get();
+                        doc = Jsoup.connect("http://"+URL).get();
 
 
                 }catch(Exception e){
@@ -41,7 +41,7 @@ public class Main {
             break;
         }
 
-        System.out.println("La cantidad de lineas es: "+ doc.getAllElements().size());
+        System.out.println("La cantidad de lineas es: "+ doc.html().split("\n").length);
 
         Elements links = doc.getElementsByTag("p");
         System.out.println("La cantidad de párrafos es: "+ links.size());
