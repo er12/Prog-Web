@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="H2 - jdbc:h2:tcp://localhost:9092/~/P2" uuid="cbb6edbf-1aea-416e-b8cf-a4dbb0be227a">
+      <secret-storage>master_key</secret-storage>
+      <user-name>sa</user-name>
+      <schema-pattern>P2.PUBLIC</schema-pattern>
+      <default-schemas>P2.PUBLIC</default-schemas>
+    </data-source>
+  </component>
+</project>

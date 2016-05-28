@@ -1,0 +1,15 @@
+group 'Practica2'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.5
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'H2 1.4.191 (2016-01-21)'
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
