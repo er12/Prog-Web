@@ -18,9 +18,9 @@
         <processorPath useClasspath="true" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="PWeb_main" target="1.5" />
-      <module name="PWeb_test" target="1.5" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="PWeb_main" target="1.8" />
+      <module name="PWeb_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

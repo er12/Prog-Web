@@ -10,6 +10,14 @@ repositories {
 }
 
 dependencies {
-    compile 'H2 1.4.191 (2016-01-21)'
+    def freemarkerVersion = "2.3.21"
+
+    compile group: 'com.sparkjava', name: 'spark-core', version: '2.5'
+    compile("org.freemarker:freemarker:${freemarkerVersion}")
     testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.21'
+    compile group: 'org.slf4j', name: 'slf4j-simple', version: '1.6.1'
+
+
+
 }
