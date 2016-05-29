@@ -1,0 +1,50 @@
+
+td{
+    border-radius: 5px;
+    border: 2px solid #6495ED;
+    background-color: #33ccff;
+    height: 60px;
+    width: 150px;
+    margin: auto;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: #3D59AB;
+    font-family: Verdana, sans-serif;
+}
+
+table{
+    border-radius: 10px;
+    border: 2px dashed #009933;
+    background-color: #009933;
+
+}
+
+ul {
+    list-style-type: none;
+
+    background-color: #009933;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: inline-block;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+    padding: 14px 16px;
+
+}
+
+li a:hover {
+    background-color: #111;
+}

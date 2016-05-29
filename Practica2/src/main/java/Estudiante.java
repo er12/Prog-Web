@@ -3,14 +3,14 @@ public class Estudiante{
     private String matricula;
     private String nombre;
     private String apellidos;
-    private String telefono;
-
     public Estudiante(String matricula, String nombre, String apellidos, String telefono) {
         this.matricula = matricula;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.telefono = telefono;
     }
+
+    private String telefono;
 
     public String getMatricula() {
         return matricula;

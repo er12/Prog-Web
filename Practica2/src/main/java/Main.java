@@ -3,7 +3,9 @@
  */
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import spark.ModelAndView;
@@ -14,12 +16,35 @@ public class Main {
 
     public static void main(String args[]) {
 
+        staticFileLocation("/styleSheets");
+
+
+        get("/", (request, response) -> {
+            Map<String, Object> attributes = new HashMap<>();
+            attributes.put("message", "Hello World!");
+
+            List<Estudiante> estudiantes = new ArrayList<Estudiante>();
+            estudiantes.add(new Estudiante("20120201", "Ernesto","Rodríguez","809-471-3978"));
+
+
+            attributes.put("estudiantes", estudiantes);
+
+
+            return new ModelAndView(attributes, "hello.ftl");
+        }, new FreeMarkerEngine());
+
+        get("/editar", (request, response) -> {
+            Map<String, Object> attributes = new HashMap<>();
+            attributes.put("message", "Hello World!");
+
+
+            return new ModelAndView(attributes, "hello.ftl");
+        }, new FreeMarkerEngine());
         get("/hello", (request, response) -> {
             Map<String, Object> attributes = new HashMap<>();
             attributes.put("message", "Hello World!");
 
-            // The hello.ftl file is located in directory:
-            // src/test/resources/spark/template/freemarker
+
             return new ModelAndView(attributes, "hello.ftl");
         }, new FreeMarkerEngine());
 
