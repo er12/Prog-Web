@@ -5,7 +5,7 @@
     <title>Práctica 2</title>
 </head>
 <body>
-<h1>20120201</h1>
+<h1>Practica 2 - Estudiantes</h1>
 <ul id="bar1">
     <li><a href="/" >Inicio</a></li>
     <li><a href="/crear" >Nuevo Estudiante</a></li>
@@ -30,7 +30,7 @@
         <td>${estudiante.getNombre()} </td>
         <td>${estudiante.getApellidos()} </td>
         <td>${estudiante.getTelefono()} </td>
-        <td><form><input type="checkbox" name="check" value="edit"></form></td>
+        <td><form><input id = "check" type="checkbox" name="check" value="edit" onclick="change ()"></form></td>
 
     </tr>
     </#list>
@@ -39,6 +39,27 @@
 
 </table>
 
-
+<form><input type = "submit"  value="Eliminar" >     <br>
+    <input id = "elegido" type = "submit"  value="Editar">
+</form>
 </body>
+<script>
+    function change() {
+
+        var count = document.getElementsByTagName('input').length;
+
+        if(count>3) {
+
+            hidden = true;
+        }
+        else {
+            hidden = false;
+        }
+        if (hidden) {
+            document.getElementById('elegido').style.visibility = 'hidden';
+        } else {
+            document.getElementById('elegido').style.visibility = 'visible';
+        }
+    }
+</script>
 </html>

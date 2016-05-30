@@ -5,7 +5,7 @@
         <title>Práctica 2</title>
     </head>
     <body>
-        <h1>20120201</h1>
+        <h1>Practica 2 - Estudiantes</h1>
         <ul id="bar1">
             <li><a href="/" >Inicio</a></li>
             <li><a href="/crear" >Nuevo Estudiante</a></li>

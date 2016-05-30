@@ -49,6 +49,8 @@ public class Main {
             String nom = request.params("nombre");
             String apl = request.params("apellidos");
             String tel = request.params("telefono");
+            System.out.println(mat +" "+nom+" "+apl+" "+tel);
+
 
 
             Estudiante e = new Estudiante(mat,nom,apl,tel);
