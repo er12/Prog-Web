@@ -8,8 +8,8 @@
         <h1>20120201</h1>
         <ul id="bar1">
             <li><a href="/" >Inicio</a></li>
-            <li><a href="/create.ftl" >Nuevo Estudiante</a></li>
-            <li><a href="/edit.ftl" >Editar Etudiantes</a></li>
+            <li><a href="/crear" >Nuevo Estudiante</a></li>
+            <li><a href="/editar" >Editar Estudiantes</a></li>
         </ul>
         </br>
         <table>

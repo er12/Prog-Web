@@ -5,13 +5,25 @@
         <title>Práctica 2</title>
     </head>
     <body>
-        <h1>20120201</h1>
-        <ul id="bar1">
-            <li><a href="/">Inicio</a></li>
-            <li><a href="/create.ftl">Nuevo Estudiante</a></li>
-            <li><a href="/edit.ftl">Editar Etudiantes</a></li>
-        </ul>
-
+    <h1>Practica 2 - Estudiantes</h1>
+    <ul id="bar1">
+        <li><a href="/" >Inicio</a></li>
+        <li><a href="/crear" >Nuevo Estudiante</a></li>
+        <li><a href="/editar" >Editar Estudiantes</a></li>
+    </ul>
     </br>
+    <form action="/" method="post">
+        Matrícula (Ej.:20120201):<br>
+        <input type="text" name="matricula" style="width:150px;height:30px;"><br>
+        Nombre:<br>
+        <input type="text" name="nombre" style="width:600px;height:30px;"><br>
+        Apellidos:<br>
+        <input type="text" name="apellidos"style="width:600px;height:30px;"><br>
+        Teléfono:<br>
+        <input type="text" name="telefono" style="width:600px;height:30px;"><br>
+        <br>
+        <input type="submit" value="Insertar" >
+    </form>
+
     </body>
 </html>

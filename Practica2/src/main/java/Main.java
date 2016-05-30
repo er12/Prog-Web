@@ -16,39 +16,81 @@ public class Main {
 
     public static void main(String args[]) {
 
+        Gestor basedato= new Gestor();
+
+        basedato.startConection();
+        basedato.testConection();
+        basedato.create();
+
+
+
         staticFileLocation("/styleSheets");
 
 
         get("/", (request, response) -> {
             Map<String, Object> attributes = new HashMap<>();
-            attributes.put("message", "Hello World!");
 
-            List<Estudiante> estudiantes = new ArrayList<Estudiante>();
-            estudiantes.add(new Estudiante("20120201", "Ernesto","Rodríguez","809-471-3978"));
+            List<Estudiante> estudiantes = new ArrayList<Estudiante>();estudiantes.add(new Estudiante("20120201", "Ernesto","Rodríguez","809-471-3978"));
+            List<Estudiante> dummy = basedato.getAllStudents();
 
 
-            attributes.put("estudiantes", estudiantes);
+            if(dummy.size()==0||dummy==null)
+            attributes.put("estudiantes",estudiantes);
+            else attributes.put("estudiantes",dummy);
 
 
             return new ModelAndView(attributes, "hello.ftl");
         }, new FreeMarkerEngine());
+
+
+        post("/", (request, response) -> {
+            Map<String, Object> attributes = new HashMap<>();
+            String mat = request.params("matricula");
+            String nom = request.params("nombre");
+            String apl = request.params("apellidos");
+            String tel = request.params("telefono");
+
+
+            Estudiante e = new Estudiante(mat,nom,apl,tel);
+            basedato.insertarEstudiante(e);
+            attributes.put("estudiantes", basedato.getAllStudents());
+
+
+            return new ModelAndView(attributes, "hello.ftl");
+        }, new FreeMarkerEngine());
+
+
+
+
 
         get("/editar", (request, response) -> {
             Map<String, Object> attributes = new HashMap<>();
-            attributes.put("message", "Hello World!");
+            List<Estudiante> estudiantes = new ArrayList<Estudiante>();estudiantes.add(new Estudiante("20120201", "Ernesto","Rodríguez","809-471-3978"));
+            List<Estudiante> dummy = basedato.getAllStudents();
 
 
-            return new ModelAndView(attributes, "hello.ftl");
+            if(dummy.size()==0||dummy==null)
+                attributes.put("estudiantes",estudiantes);
+            else attributes.put("estudiantes",dummy);
+
+            return new ModelAndView(attributes, "edit.ftl");
         }, new FreeMarkerEngine());
-        get("/hello", (request, response) -> {
+
+
+
+
+
+        get("/crear", (request, response) -> {
             Map<String, Object> attributes = new HashMap<>();
-            attributes.put("message", "Hello World!");
 
 
-            return new ModelAndView(attributes, "hello.ftl");
+
+
+            return new ModelAndView(attributes, "create.ftl");
         }, new FreeMarkerEngine());
 
     }
+
 
 }
 /*

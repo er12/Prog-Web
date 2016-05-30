@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<component name="dataSourceStorage">
-  <data-source name="H2 - jdbc:h2:tcp://localhost:9092/~/P2" uuid="7321016d-0efe-43a8-afee-20e06f849aba">
-    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
-  </data-source>
-</component>
