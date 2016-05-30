@@ -45,10 +45,10 @@ public class Main {
 
         post("/", (request, response) -> {
             Map<String, Object> attributes = new HashMap<>();
-            String mat = request.params("matricula");
-            String nom = request.params("nombre");
-            String apl = request.params("apellidos");
-            String tel = request.params("telefono");
+            String mat = request.queryParams("matricula");
+            String nom = request.queryParams("nombre");
+            String apl = request.queryParams("apellidos");
+            String tel = request.queryParams("telefono");
             System.out.println(mat +" "+nom+" "+apl+" "+tel);
 
 
@@ -63,6 +63,12 @@ public class Main {
 
 
 
+        get("/eliminar", (request, response) -> {
+            Map<String, Object> attributes = new HashMap<>();
+            response.redirect("/");
+
+            return new ModelAndView(attributes, "hello.ftl");
+        }, new FreeMarkerEngine());
 
 
         get("/editar", (request, response) -> {

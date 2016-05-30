@@ -12,6 +12,7 @@
     <li><a href="/editar" >Editar Estudiantes</a></li>
 </ul>
 </br>
+<form action="/" method="post">
 <table>
     <thead>
     <tr>
@@ -30,8 +31,7 @@
         <td>${estudiante.getNombre()} </td>
         <td>${estudiante.getApellidos()} </td>
         <td>${estudiante.getTelefono()} </td>
-        <td><form><input id = "check" type="checkbox" name="check" value="edit" onclick="change ()"></form></td>
-
+        <td><input id = "check" type="checkbox" name="check" value="edit" onclick="change ()"></td>
     </tr>
     </#list>
 
@@ -39,17 +39,16 @@
 
 </table>
 
-<form><input type = "submit"  value="Eliminar" >     <br>
+<input type = "submit"  value="Eliminar" action="/eliminar" method="get">     <br>
     <input id = "elegido" type = "submit"  value="Editar">
 </form>
 </body>
 <script>
     function change() {
 
-        var count = document.getElementsByTagName('input').length;
+        var count = document.querySelectorAll('input[type="checkbox"]:checked').length;
 
-        if(count>3) {
-
+        if(count>=2) {
             hidden = true;
         }
         else {

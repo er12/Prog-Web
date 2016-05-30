@@ -92,6 +92,30 @@ public class Gestor
 
     }
 
+    public void eliminarEstudiante(String mat) {
+        Connection conn = null;
+        JdbcConnectionPool cp = JdbcConnectionPool.
+                create("jdbc:h2:~/Pracica2", "sa", "");
+        try {
+            conn = cp.getConnection();
+            Statement stmt = conn.createStatement();
+
+            String sql = "DELETE FROM ESTUDIANTES WHERE MATRICULA = ?";
+            PreparedStatement prepareStatement = conn.prepareStatement(sql);
+
+            prepareStatement.setString(1, mat);
+            prepareStatement.executeUpdate();
+            conn.commit();
+            conn.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
     public ArrayList<Estudiante> getAllStudents()
     {
         ArrayList<Estudiante> estudiantes = new ArrayList<>();
