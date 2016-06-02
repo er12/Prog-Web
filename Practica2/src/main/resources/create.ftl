@@ -12,6 +12,8 @@
         <li><a href="/editar" >Editar Estudiantes</a></li>
     </ul>
     </br>
+    <h1>Crear estudiante</h1>
+    </br>
     <form action="/" method="post">
         Matrícula (Ej.:20120201):<br>
         <input type="text" name="matricula" style="width:150px;height:30px;"><br>

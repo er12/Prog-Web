@@ -85,6 +85,7 @@ public class Gestor
 
             if(id ==null || first ==null || last ==null || phone==null)
                 return;
+
             prepareStatement.setString(1,id );
             prepareStatement.setString(2, first);
             prepareStatement.setString(3, last);

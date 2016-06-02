@@ -30,25 +30,35 @@ public class Main {
             attributes.put("estudiantes",dummy);
             return new ModelAndView(attributes, "hello.ftl");
         }, new FreeMarkerEngine());
+
         post("/", (request, response) -> {
             Map<String, Object> attributes = new HashMap<>();
-            List<Estudiante> dummy = basedato.getAllStudents();
-            attributes.put("estudiantes",dummy);
+            String mat = request.queryParams("matricula");
+            String nom = request.queryParams("nombre");
+            String apl = request.queryParams("apellidos");
+            String tel = request.queryParams("telefono");
+            //System.out.println("Yes "+ mat+ " "+nom +" "+apl + " "+ tel);
+
+                Estudiante e = new Estudiante(mat,nom,apl,tel);
+                basedato.insertarEstudiante(e);
+                attributes.put("estudiantes", basedato.getAllStudents());
+
+
             return new ModelAndView(attributes, "hello.ftl");
-        }, new FreeMarkerEngine());
+         }, new FreeMarkerEngine());
+
+
 
 
    get("/editarX", (request, response) -> {
             Map<String, Object> attributes = new HashMap<>();
             basedato.eliminarEstudiante(request.queryParams("MatriculaEd"));
-
-           String mat = ((request.queryParams("matricula").equals(null)? request.queryParams("MatriculaEd") : request.queryParams("matricula")));
-            String nom = ((request.queryParams("nombre").equals(null)? request.queryParams("NombreEd") : request.queryParams("nombre")));
-            String apl = ((request.queryParams("apellidos").equals(null)? request.queryParams("ApellidosEd") : request.queryParams("apellidos")));
-            String tel = ((request.queryParams("telefono").equals(null)? request.queryParams("TelefonoEd") : request.queryParams("telefono")));
-
-
-       System.out.println("Nombre = "+request.queryParams("nombre" )+  request.queryParams("NombreEd"));
+       System.out.println((request.queryParams("matricula") + "----" +request.queryParams("MatriculaEd")));
+       System.out.println((request.queryParams("nombre") + "----" +request.queryParams("NombreEd")));
+           String mat = ((request.queryParams("matricula").equals("")? request.queryParams("MatriculaEd") : request.queryParams("matricula")));
+            String nom = ((request.queryParams("nombre").equals("")? request.queryParams("NombreEd") : request.queryParams("nombre")));
+            String apl = ((request.queryParams("apellidos").equals("")? request.queryParams("ApellidosEd") : request.queryParams("apellidos")));
+            String tel = ((request.queryParams("telefono").equals("")? request.queryParams("TelefonoEd") : request.queryParams("telefono")));
 
        basedato.insertarEstudiante(new Estudiante(mat,nom,apl,tel));
 
@@ -81,10 +91,6 @@ public class Main {
                     request.attribute("ApellidosEd",dummy.get("apellidos"));
                     request.attribute("TelefonoEd",dummy.get("telefono"));
 
-
-
-
-
                     return new ModelAndView(attributes, "editStu.ftl");
                 }
 
@@ -99,30 +105,15 @@ public class Main {
                 return new ModelAndView(attributes, "deleted.ftl");
 
 
-
-
-
-
         }, new FreeMarkerEngine());
 
 
         get("/editar", (request, response) -> {
             Map<String, Object> attributes = new HashMap<>();
-            List<Estudiante> estudiantes = new ArrayList<Estudiante>();estudiantes.add(new Estudiante("20120201", "Ernesto","Rodríguez","809-471-3978"));
+
             List<Estudiante> dummy = basedato.getAllStudents();
 
-
-            if(dummy.size()==0||dummy==null)
-                attributes.put("estudiantes",estudiantes);
-            else attributes.put("estudiantes",dummy);
-
-            return new ModelAndView(attributes, "edit.ftl");
-        }, new FreeMarkerEngine());
-
-        post("/editar", (request, response) -> {
-            Map<String, Object> attributes = new HashMap<>();
-
-
+            attributes.put("estudiantes",dummy);
 
             return new ModelAndView(attributes, "edit.ftl");
         }, new FreeMarkerEngine());
@@ -130,10 +121,6 @@ public class Main {
 
         get("/crear", (request, response) -> {
             Map<String, Object> attributes = new HashMap<>();
-
-
-
-
             return new ModelAndView(attributes, "create.ftl");
         }, new FreeMarkerEngine());
 
