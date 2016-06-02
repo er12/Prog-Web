@@ -12,16 +12,14 @@
     <li><a href="/editar" >Editar Estudiantes</a></li>
 </ul>
 </br>
-<form action="/" method="post">
-<table>
+
+<table id = "tabEst">
     <thead>
     <tr>
         <th>Matrícula</th>
         <th>Nombre</th>
         <th>Apellidos</th>
         <th>Teléfono</th>
-        <th>Edit</th>
-
     </tr>
     </thead>
     <tbody>
@@ -31,34 +29,19 @@
         <td>${estudiante.getNombre()} </td>
         <td>${estudiante.getApellidos()} </td>
         <td>${estudiante.getTelefono()} </td>
-        <td><input id = "check" type="checkbox" name="check" value="edit" onclick="change ()"></td>
     </tr>
     </#list>
 
     </tbody>
 
 </table>
+<form action="/update" method="post">
+    Matrícula a editar/eliminar: <input type="text" name="matricula" style="width:150px;height:30px;"><br>
+    <br>
+    <input type = "submit"  value="Eliminar" name="eliminar" >     <br><br>
+    <input id = "elegido" type = "submit"  name="editar" value="Editar">
 
-<input type = "submit"  value="Eliminar" action="/eliminar" method="get">     <br>
-    <input id = "elegido" type = "submit"  value="Editar">
 </form>
 </body>
-<script>
-    function change() {
 
-        var count = document.querySelectorAll('input[type="checkbox"]:checked').length;
-
-        if(count>=2) {
-            hidden = true;
-        }
-        else {
-            hidden = false;
-        }
-        if (hidden) {
-            document.getElementById('elegido').style.visibility = 'hidden';
-        } else {
-            document.getElementById('elegido').style.visibility = 'visible';
-        }
-    }
-</script>
 </html>

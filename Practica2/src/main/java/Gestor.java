@@ -6,6 +6,7 @@ import org.h2.jdbcx.JdbcConnectionPool;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Gestor
 {
@@ -76,10 +77,18 @@ public class Gestor
                     "apellidos,telefono)VALUES (?,?,?,?)";
             PreparedStatement prepareStatement = conn.prepareStatement(sql);
 
-            prepareStatement.setString(1, est.getMatricula());
-            prepareStatement.setString(2, est.getNombre());
-            prepareStatement.setString(3, est.getApellidos());
-            prepareStatement.setString(4, est.getTelefono());
+
+            String id  = est.getMatricula();
+            String first = est.getNombre();
+            String last = est.getApellidos();
+            String phone  = est.getTelefono();
+
+            if(id ==null || first ==null || last ==null || phone==null)
+                return;
+            prepareStatement.setString(1,id );
+            prepareStatement.setString(2, first);
+            prepareStatement.setString(3, last);
+            prepareStatement.setString(4, phone);
 
             prepareStatement.executeUpdate();
             conn.commit();
@@ -90,6 +99,23 @@ public class Gestor
         }
 
 
+    }
+    public HashMap obtener_datos(String est)
+    {
+        ArrayList<Estudiante> lista = getAllStudents();
+        HashMap<String,String> result = new HashMap<>();
+        for(Estudiante e : lista)
+        {
+            if(e.getMatricula().equals(est))
+            {
+                result.put("matricula",e.getMatricula());
+                result.put("nombre",e.getNombre());
+                result.put("apellidos",e.getApellidos());
+                result.put("telefono",e.getTelefono());
+                break;
+            }
+        }
+        return result;
     }
 
     public void eliminarEstudiante(String mat) {
@@ -115,6 +141,38 @@ public class Gestor
 
     }
 
+    public boolean exists(String matricula)
+    {
+        Connection conn = null;
+        JdbcConnectionPool cp = JdbcConnectionPool.
+                create("jdbc:h2:~/Pracica2", "sa", "");
+        boolean b= false;
+        try {
+            conn = cp.getConnection();
+            Statement stmt = conn.createStatement();
+
+            String sql = "SELECT * FROM ESTUDIANTES WHERE matricula = '"+matricula +"'";
+            ResultSet rs = stmt.executeQuery(sql);
+
+            if(rs.next())
+            {
+                b = true;
+            }
+            else b = false;
+            rs.close();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return b;
+
+    }
 
     public ArrayList<Estudiante> getAllStudents()
     {
