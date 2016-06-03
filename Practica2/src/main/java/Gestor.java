@@ -8,6 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+
 public class Gestor
 {
 
@@ -24,11 +25,14 @@ public class Gestor
         Connection conn = null;
         try {
             conn = DriverManager.getConnection("jdbc:h2:~/test");
+            conn.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
+
     }
+
 
     public void testConection()
     {

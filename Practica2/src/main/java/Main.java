@@ -53,8 +53,7 @@ public class Main {
    get("/editarX", (request, response) -> {
             Map<String, Object> attributes = new HashMap<>();
             basedato.eliminarEstudiante(request.queryParams("MatriculaEd"));
-       System.out.println((request.queryParams("matricula") + "----" +request.queryParams("MatriculaEd")));
-       System.out.println((request.queryParams("nombre") + "----" +request.queryParams("NombreEd")));
+
            String mat = ((request.queryParams("matricula").equals("")? request.queryParams("MatriculaEd") : request.queryParams("matricula")));
             String nom = ((request.queryParams("nombre").equals("")? request.queryParams("NombreEd") : request.queryParams("nombre")));
             String apl = ((request.queryParams("apellidos").equals("")? request.queryParams("ApellidosEd") : request.queryParams("apellidos")));
